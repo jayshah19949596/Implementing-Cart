@@ -1,0 +1,10 @@
+v1.0
+Cart implemented successfully
+PENDING: User accounts and money deduction
+(Nishit)
+------------------------------
+
+V1.0.2
+Database made
+Balance update remaining
+(jai) 

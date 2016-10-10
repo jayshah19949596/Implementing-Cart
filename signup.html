@@ -1,0 +1,80 @@
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=2">
+        		<title>Welcome to MovieArena</title>
+		<link href="moviestyle.css" type="text/css" rel="stylesheet">
+		<script>
+		function checkingValidity() {
+			var inpObj = document.getElementById("age");	
+			if (inpObj.checkValidity() == false) {
+        				alert(inpObj.validationMessage);
+   				 } 
+			} 
+		</script>
+	</head>
+  
+  <body>
+		
+<!-- Header Start -->
+<header>
+			<nav>
+				<ul class="nav inline-items">
+					<li>.</li>
+					<li><a href="welcome.html">Home</a></li>
+					<li><a href="index.php">Movies</a></li>
+					<li><a href="reviews.html">Reviews</a></li>
+					<li><a href="trailers.html">Trailers</a></li>
+					<li><a href="faq.html">FAQ</a></li>
+				</ul>
+			</nav>
+</header>
+<!-- Header End -->
+
+		<article  id="signup_body">
+<section>
+<img src="images/signup_side.png" id="side_img">
+<br><br>
+<h3> Personal Details: </h3>
+<form name="form1" method="post" action="movieret.php" autocomplete id="f1">
+<b>&nbsp;&nbsp;&nbsp;Last Name: <input name="lname" type="text" size="15" maxlength="20" placeholder="Last Name" autofocus required>
+      <br><br>&nbsp;&nbsp;&nbsp;First Name: <input name="fname" id="fname" type="text" size="15" maxlength="20" placeholder="First Name" required>
+<br><br>
+<b>&nbsp;&nbsp;&nbsp;Gender: M<input type="radio" name="gender">&nbsp;&nbsp;
+                      F<input type="radio" name="gender">
+<br><br>
+<b>&nbsp;&nbsp;&nbsp;Date of Birth: <input type="date" name="dob" required>
+<br><br>
+<b>&nbsp;&nbsp;&nbsp;Age: <input type="number" id="age" min="15" max="150">                     
+<br><br>
+<b>&nbsp;&nbsp;&nbsp;Mobile Number:  (+91)<input name="mobno" type="tel" maxlength="10" size="15" required placeholder="Enter Mobile Number">
+<br><br>
+<b>&nbsp;&nbsp;&nbsp;E-mail: <input type="email" name="email" size="20" required placeholder="Enter E-mail ID">
+</section>
+
+<br><br>
+
+<section>
+
+<h3> Account Details:</h3>
+<b>&nbsp;&nbsp;&nbsp;Username: <input type="text" name="uname"   size="29" title="Enter 3 numeric values after alphabetic value" placeholder="Login ID" required>
+<br><br>
+<b>&nbsp;&nbsp;&nbsp;Password:  &nbsp;&nbsp;<input type="password" name="pass" size="29" placeholder="Type your password">
+<br><br>
+<b>&nbsp;&nbsp;&nbsp;Confirm Password: <input type="password" name="cpass" size="29" placeholder="Re-type your password">
+<br><br><br><br>
+
+<button onclick="checkingValidity()">Submit</button>
+<input type="reset" value="Clear">
+<br><br><br><br>
+</article>
+
+			
+		<footer>
+			<p><a href="contactus.html">Contact Us</a> | <a href="sitemap.html">Sitemap</a> | <a href="privacypolicy.html">Privacy Policy</a> | <a href="signup.html">Sign Up</a> | <a href="login.html">Login</a> </p>
+			<p>&copy;2014 Copyright info here...</p>
+		</footer>
+
+  </body>
+</html>

@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Send HTML Form as JSON</title>
+<link rel="stylesheet" href="style.css"> </link>
+<link href="moviestyle.css" rel="stylesheet" type="text/css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#btn").click(function(e)
+	{
+	if ( $( ".required" ).val().length == 0 ) {
+ 	// Usually show some kind of error message here
+	alert('Enter the pincode');
+	// Prevent the form from submitting
+	event.preventDefault();
+	}
+	else
+	{
+	$("#response").slideUp("slow");
+	//alert("hi");
+	 var jsonData = {};
+	 
+var formData = $("#myform").serializeArray();
+// console.log(formData);
+   
+   $.each(formData, function() {
+        if (jsonData[this.name]) {
+           if (!jsonData[this.name].push) {
+               jsonData[this.name] = [jsonData[this.name]];
+           }
+           jsonData[this.name].push(this.value || '');
+       } else {
+           jsonData[this.name] = this.value || '';
+       }
+    });
+   console.log(jsonData);
+	$.ajax(
+	{
+		url : "action.php",
+		type: "POST",
+		data : jsonData,
+		success:function(data, textStatus, jqXHR) 
+		{
+		$("#response").text("");
+$("#response").append(data);
+$("#response").slideDown("slow");
+		}
+	});
+	$("#msg").show("slow");
+	 
+    e.preventDefault();	
+}
+});
+});
+</script>
+</head>
+
+<body>
+<h1>Registration Form</h1>
+<div id="msg">
+<div id="response"></div>
+</div>
+<form action="action.php" id="myform" class="form-inline" method="post" autocomplete="on">
+<fieldset>
+<legend>Personal Details</legend>
+<table width="450px">
+<tr><td>
+<label for="nam">First Name</label>
+</td><td>
+<input type="text" required="required" name="fname"  size="20" placeholder="Enter your first name" autofocus>
+</td></tr>
+<tr><td>
+<label for="nam">Last Name</label>
+</td><td>
+<input type="text" required="required" name="lname"  size="20" placeholder="Enter your last name" autofocus>
+</td></tr>
+<tr><td>
+<label for="email">E-mail address</label>
+</td><td>
+<input type="email" required="required" name="email"  size="20" placeholder="Enter email id" autocomplete="off">
+</td></tr>
+<tr><td>
+<label for="nam">Contact number</label>
+</td><td>
+<input type="number" required="required" name="number"  size="25" placeholder="Enter your contact number" autofocus>
+</td></tr>
+</table>
+</fieldset>
+
+<fieldset>
+<legend>Address</legend>
+<table width="450px">
+<tr><td>
+<label for="add">Street Address Line 1</label>
+</td><td>
+<input type="text" name="add1" placeholder="Enter your address" autofocus>
+</td></tr>
+<tr><td>
+<label for="add">Street Address line 2</label>
+</td><td>
+<input type="text" name="add2"  autofocus>
+</td></tr>
+<tr><td>
+<label for="pincode">Pincode</label>
+</td><td>
+<input type="text" name="pincode" placeholder="Enter pincode" autofocus class="required">
+</td></tr>
+<tr><td>
+<label for="city">City</label>
+</td><td>
+<input type="text" name="city" placeholder="Enter city" autofocus>
+</td></tr>
+<tr><td>
+<label for="country">Country</label>
+</td><td>
+<input list="country" name="country">
+
+<datalist id="country">
+  <option value="India">
+  <option value="Pakistan">
+  <option value="USA">
+  <option value="England">
+  <option value="Australia">
+</datalist>
+</table>
+</fieldset>
+
+
+
+<div class="submit">
+<br>
+      <input type="submit" value="Submit" id="btn" formaction="action.php" formmethod="POST">
+<input type="reset" value="Reset">
+    </div>
+
+
+</form>
+
+</body>
+</html>
